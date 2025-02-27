@@ -35,12 +35,43 @@ Comandos de interação com os dados em tabelas.
 
 
 '''
-Comandos de consulta dentro do Banco de Dados
+Comandos de consulta dentro do Banco de Dados.
 '''
 
 dados = cursor.execute('SELECT * FROM usuario')
 for usuario in dados:
     print(usuario)
+
+
+'''
+Clausulas de ordenação e consulta dentro do SQL (ORDER BY e DESC).
+'''
+
+# dados = cursor.execute('SELECT * FROM usuario ORDER BY nome') # -> ordenando alfabeticamente
+# dados = cursor.execute('SELECT * FROM usuario ORDER BY id DESC') # -> retorna os dados de forma decrescente (reverso)
+# for usuario in dados:
+#    print(usuario)
+
+
+'''
+Clausulas de ordenação e consulta dentro do SQL (LIMIT e DISTINCT).
+'''
+
+# dados = cursor.execute('SELECT * FROM usuario LIMIT 2') # -> limitando o limite de dados (linhas da tabela) a serem retornados
+# dados = cursor.execute('SELECT DISTINCT * FROM usuario LIMIT 2') # -> utilizando o 'DISTINCT' você filtar o retorno de dados diferentes dentro da tabela
+# for usuario in dados:
+#    print(usuario)
+
+
+'''
+Clausulas de ordenação e consulta dentro do SQL (GROUP BY e HAVING).
+'''
+
+# dados = cursor.execute('SELECT nome FROM usuario GROUP BY nome') # -> agrupando informações por uma ou mais colunas
+# dados = cursor.execute('SELECT nome FROM usuario GROUP BY nome HAVING id>1') # -> utilizando o 'HAVING' no lugar de 'WHERE' (após o processo de agregação)
+# for usuario in dados:
+#     print(usuario)
+
 
 conexao.commit() # linha que determina o comando de envio das informações (dados)
 conexao.close # encerra o processo de comandos feitos entre a conexão e o commit
