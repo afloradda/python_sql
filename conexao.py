@@ -34,6 +34,14 @@ Comandos de interação com os dados em tabelas.
 # cursor.execute('UPDATE usuario SET endereco="Itália" WHERE id=3')
 
 
+'''
+Comandos de consulta dentro do Banco de Dados
+'''
+
+dados = cursor.execute('SELECT * FROM usuario')
+for usuario in dados:
+    print(usuario)
+
 conexao.commit() # linha que determina o comando de envio das informações (dados)
 conexao.close # encerra o processo de comandos feitos entre a conexão e o commit
 
