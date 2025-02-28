@@ -6,6 +6,7 @@ import sqlite3 # biblioteca instalada no ato de instalação da linguagem python
 conexao = sqlite3.connect('banco') # estabelece conexão do arquivo python com data base SQLite
 cursor = conexao.cursor() # 
 
+
 '''
 Comandos que Interagem com objetos (tabelas) dentro do Banco de Dados.
 '''
@@ -69,6 +70,26 @@ Clausulas de ordenação e consulta dentro do SQL (GROUP BY e HAVING).
 
 # dados = cursor.execute('SELECT nome FROM usuario GROUP BY nome') # -> agrupando informações por uma ou mais colunas
 # dados = cursor.execute('SELECT nome FROM usuario GROUP BY nome HAVING id>1') # -> utilizando o 'HAVING' no lugar de 'WHERE' (após o processo de agregação)
+# for usuario in dados:
+#     print(usuario)
+
+
+'''
+Clausulas de agrupamento e consulta dentro do SQL em duas ou mais tabelas (JOIN'S: INNER, LEFT, RIGHT, FULL).
+'''
+
+# cursor.execute('CREATE TABLE gerentes(id INT, nome VARCHAR(100), endereco VARCHAR(100), email VARCHAR(100))')
+# cursor.execute('DROP TABLE gerentes')
+
+# cursor.execute('INSERT INTO gerentes (id, nome, endereco, email) VALUES (1, "Mariana Souza", "Rua A, 123 - São Paulo", "mariana@email.com")')
+# cursor.execute('INSERT INTO gerentes (id, nome, endereco, email) VALUES (2, "Carlos Pereira", "Av. B, 456 - Rio de Janeiro", "carlos@email.com")')
+# cursor.execute('INSERT INTO gerentes (id, nome, endereco, email) VALUES (3, "Fernanda Lima", "Rua C, 789 - Belo Horizonte", "fernanda@email.com")')
+# cursor.execute('INSERT INTO gerentes (id, nome, endereco, email) VALUES (4, "Roberto Mendes", "Av. D, 101 - Curitiba", "roberto@email.com")')
+
+# dados = cursor.execute('SELECT * FROM usuario INNER JOIN gerentes ON usuario.id = gerentes.id') # -> o INNER JOIN retorna as linhas correspondentes as condições determinadas
+# dados = cursor.execute('SELECT * FROM usuario LEFT JOIN gerentes ON usuario.id = gerentes.id') # -> o LEFT JOIN retorna todas as informações da primeira tabela inserida na clausula
+# dados = cursor.execute('SELECT * FROM usuario INNER JOIN gerentes ON usuario.id = gerentes.id') # -> o RIGHT JOIN preenche todas as informações a direita tal como o LEFT JOIN com a esquerda
+# dados = cursor.execute('SELECT * FROM usuario INNER JOIN gerentes ON usuario.id = gerentes.id') # -> retorna todas as linhas de ambas as tabelas e passa a compara-las uma a uma
 # for usuario in dados:
 #     print(usuario)
 
